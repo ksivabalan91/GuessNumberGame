@@ -36,8 +36,8 @@ public class GuessNumberClient {
             System.out.println(dis.readUTF());
 
             while (!exit) {
-                String input = scan.nextLine();
-                dos.writeUTF(input);
+                int input = scan.nextInt();
+                dos.write(input);
 
                 String fromServer = dis.readUTF();
                 System.out.println(fromServer);

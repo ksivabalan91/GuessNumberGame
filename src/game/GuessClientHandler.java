@@ -19,7 +19,6 @@ public class GuessClientHandler implements Runnable{
         Random rand = new Random();
         int guessNumber = rand.nextInt(0, 100);
         int myGuess = 0;
-        String fromClient = "";
         boolean exit = false;
 
         try {
@@ -28,15 +27,12 @@ public class GuessClientHandler implements Runnable{
             InputStream is = s.getInputStream();
             DataInputStream dis = new DataInputStream(is);
 
-            dos.writeUTF("Enter your guess: ");
+            dos.writeUTF("Enter your guess (1-100): ");
 
             while (!exit) {
                 
-                fromClient = dis.readUTF();
-                myGuess = Integer.parseInt(fromClient);
-                // System.out.println(myGuess);
-                // System.out.println(guessNumber);
-
+                myGuess = dis.read();
+                
                 while(myGuess!=guessNumber){
                     if(myGuess<guessNumber){
                         dos.writeUTF("higher");                        
